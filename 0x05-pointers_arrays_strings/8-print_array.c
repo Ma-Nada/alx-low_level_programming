@@ -5,7 +5,7 @@
  *
  * Description: 'the program's description'
  * @a: describe the parameter
- * @b: describe
+ * @n: describe
  * Return: Always 0 (Success)
  */
 void print_array(int *a, int n)
