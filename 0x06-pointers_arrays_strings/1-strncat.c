@@ -23,12 +23,11 @@ src++;
        }*/
 	while (n--)
     {
-        if (!(*dest++ = *s2++))
+        if (!(*dest++ = *src++))
         {
-            return s1;
+            return (p);
         }
     }
-       if (n == 0)
 	       *dest = '\0';
        return (p);
 }
