@@ -12,15 +12,14 @@ void reverse_array(int *a, int n)
 {
 	int i;
 
-	i = 0;
-	while (i < n)
+	i = n;
+	while (i >= 0)
 	{
-		if (i != 0)
-		{
-			printf(", ");
-		}
+		i--;
 		printf("%d", a[i]);
-		i++;
+		if (i == 0)
+			break;
+		printf(", ");
 	}
 	printf("\n");
 }
