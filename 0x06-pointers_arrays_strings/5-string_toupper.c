@@ -9,16 +9,15 @@
  */
 char *string_toupper(char *c)
 {
-	char cmp;
+	int i = 0;
 
-while (*c != '\0')
+	while (c[i] != '\0')
 {
-if ((*c >= 97) && (*c <= 122))
+if ((c[i] >= 97) && (c[i] <= 122))
 {
-	cmp = *c - 32;
-	*c = cmp;
+	c[i] = c[i] - 32;
 }
-c++;
+i++;
 }
 return (c);
 }
