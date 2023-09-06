@@ -5,7 +5,7 @@
  *
  * Description: 'the program's description'
  * @grid: describe the parameter
- * @height; description
+ * @height: description
  * Return: Always 0 (Success)
  */
 void free_grid(int **grid, int height)
