@@ -3,7 +3,6 @@
 #include <stdlib.h>
 /**
  * _calloc - Entry point
- * 
  * Description: 'the program's description'
  * @nmemb: describe the parameter
  * @size: description
