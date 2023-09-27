@@ -21,4 +21,5 @@ listint_t *add_nodeint(listint_t **head, const int n);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 listint_t *reverse_listint(listint_t **head);
 void free_listint2(listint_t **head);
+size_t print_listint_safe(const listint_t *head);
 #endif
