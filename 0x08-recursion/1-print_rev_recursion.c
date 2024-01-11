@@ -7,12 +7,10 @@
  */
 void _print_rev_recursion(char *s)
 {
-	int i = 0;
-	while (s[i] != '\0')
-		i++;
-	while (i != 0)
-	{
-		i--;
-	       printf("%c", s[i]);
-	}
+	if (*s == '\0')
+		return;
+	s++;
+	_print_rev_recursion(s);
+	s--;
+	_putchar(*s);
 }	
