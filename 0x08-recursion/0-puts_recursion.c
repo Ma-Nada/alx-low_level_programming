@@ -6,7 +6,6 @@
  */
 void _puts_recursion(char *s)
 {
-	while (*s != "\0")
 		printf("%s",s);
 	printf("\n");
 }
