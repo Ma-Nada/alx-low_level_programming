@@ -3,6 +3,7 @@
 	/**
 	 * _sqrt_recursion - Returns the natural square root of a number
 	 * description: returns the root of a number
+	 *
 	 * @m : number to calculate the root for
 	 * Return: the natural square root
 	 */
@@ -12,7 +13,7 @@
 	}
 	/**
 	 * _sqrt - calculates natural square root
-	 * description: returnd the root 
+	 *
 	 * @n: number to calculate the square root
 	 * Return: the natural square root
 	 */
