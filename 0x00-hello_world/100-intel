@@ -1,8 +1,2 @@
 #!/bin/bash
-read -p "enter the name of the C file" CFILE
-if [ ! -f $CFILE ]; then
-echo "Error: file not found"
-exit 1
-fi
-BASENAME=$(basename -s .c $CFILE)
-gcc -S -masn=intel $CFILE -o $BASENAME.s
+gcc -S -masm=intel $CFILE
