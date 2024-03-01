@@ -1,72 +1,54 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <elf.h>
 
-/**
- * error_file - checks if files can be opened.
- * @file_from: file_from.
- * @file_to: file_to.
- * @argv: arguments vector.
- * Return: no return.
- */
-void error_file(int file_from, int file_to, char *argv[])
-{
-	if (file_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	if (file_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+void printError(const char* message) {
+    fprintf(stderr, "%s\n", message);
+    exit(98);
 }
 
-/**
- * main - check the code for Holberton School students.
- * @argc: number of arguments.
- * @argv: arguments vector.
- * Return: Always 0.
- */
-int main(int argc, char *argv[])
-{
-	int file_from, file_to, err_close;
-	ssize_t nchars, nwr;
-	char buf[1024];
+void displayElfHeader(const char* filename) {
+	Elf64_Ehdr header;
+	int fd;
+	ssize_t bytesRead;
 
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
-		exit(97);
+       fd = open(filename, O_RDONLY);
+	if (fd == -1) {
+		printError("Error opening file");
+	}
+	bytesRead = read(fd, &header, sizeof(Elf64_Ehdr));
+	if (bytesRead != sizeof(Elf64_Ehdr)) {
+		printError("Error reading ELF header");
 	}
 
-	file_from = open(argv[1], O_RDONLY);
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	error_file(file_from, file_to, argv);
-
-	nchars = 1024;
-	while (nchars == 1024)
-	{
-		nchars = read(file_from, buf, 1024);
-		if (nchars == -1)
-			error_file(-1, 0, argv);
-		nwr = write(file_to, buf, nchars);
-		if (nwr == -1)
-			error_file(0, -1, argv);
+	if (header.e_ident[EI_MAG0] != ELFMAG0 || header.e_ident[EI_MAG1] != ELFMAG1 ||
+			header.e_ident[EI_MAG2] != ELFMAG2 || header.e_ident[EI_MAG3] != ELFMAG3) {
+		printError("Not an ELF file");
 	}
 
-	err_close = close(file_from);
-	if (err_close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
+	printf("ELF Header:\n");
+	printf("  Magic:   %02x %02x %02x %02x\n", header.e_ident[EI_MAG0], header.e_ident[EI_MAG1],
+			header.e_ident[EI_MAG2], header.e_ident[EI_MAG3]);
+	printf("  Class:                             %s\n", header.e_ident[EI_CLASS] == ELFCLASS64 ? "ELF64" : "ELF32");
+	printf("  Data:                              %s\n", header.e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian" : "2's complement, big endian");
+	printf("  Version:                           %d (current)\n", header.e_ident[EI_VERSION]);
+	printf("  OS/ABI:                            %d\n", header.e_ident[EI_OSABI]);
+	printf("  ABI Version:                       %d\n", header.e_ident[EI_ABIVERSION]);
+	printf("  Type:                              %d\n", header.e_type);
+	printf("  Entry point address:               0x%lx\n", (unsigned long)header.e_entry);
+
+	close(fd);
+}
+
+int main(int argc, char* argv[]) {
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
+		return 98;
 	}
 
-	err_close = close(file_to);
-	if (err_close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-	return (0);
+	displayElfHeader(argv[1]);
+
+	return 0;
 }
