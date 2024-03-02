@@ -212,16 +212,40 @@ char *_strpbrk(char *s, char *accept)
 {
 	return (strpbrk(s, accept));
 }
-5-strstr.c/     0           0     0     644     172       `
+5-strstr.c/     0           0     0     644     445       `
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include "main.h"
+/**
+ * _strstr - Entry point
+ * @haystack: input
+ * @needle: input
+ * Return: Always 0 (Success)
+ */
 char *_strstr(char *haystack, char *needle)
 {
-	return (haystack, needle);
+	char *l = haystack;
+	char *p = needle;
+
+	for (; *haystack != '\0'; haystack++)
+	{
+
+		while (*l == *p && *p != '\0')
+		{
+			l++;
+			p++;
+		}
+
+		if (*p == '\0')
+			return (haystack);
+	}
+
+	return (0);
 }
+
+
 6-abs.c/        0           0     0     644     134       `
 #include <stdio.h>
 #include <stdlib.h>
