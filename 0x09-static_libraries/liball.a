@@ -1,0 +1,259 @@
+!<arch>
+0-isupper.c/    0           0     0     644     225       `
+#include "main.h"
+/**
+ *  * _isupper - test if the char is in uppercase
+ *   *@c: the character to be tested
+ *    * Return - 0 Successful
+ *     */
+int _isupper(int c)
+{
+	if ( c >= 41 && c <= 90)
+	return (0);
+	return (1);
+}
+
+0-memset.c/     0           0     0     644     406       `
+#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+/**
+ *  * _memset - fill a block of memory with a paricular value
+ *  @s: the string that will have the char added
+ *  @b: the char to be added
+ *  @n: where to add the b in the string
+ *   *
+ *    * Return - 0 Successful
+ *     */
+char *_memset(char *s, char b, unsigned int n)
+{
+	return (memset(s, b, n));
+}
+0-strcat.c/     0           0     0     644     323       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "main.h"
+/**
+ * _strcat - appends the string pointed to by src to the one pointed to by dest
+ * @dest: the initial string
+ * @src: the string to be added
+ * Return: pointer to char
+ */
+char *_strcat(char *dest, char *src)
+{
+	return (strcat(dest, src));
+}
+
+100-atoi.c/     0           0     0     644     245       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+/**
+ * _atoi - function takes a string as an argument and returns its value
+ * @s: char
+ * Return: int
+ */
+int _atoi(char *s)
+{
+	return (atoi(s));
+}
+
+1-isdigit.c/    0           0     0     644     236       `
+#include <stdio.h>
+#include <stdlib.h>
+#include "main.h"
+#include <string.h>
+#include <ctype.h>
+/**
+ * _isdigit - tests if the int is a number
+ * @c: the int to be tested
+ * Return: int
+ */
+int _isdigit(int c)
+{
+	return (isdigit(c));
+}
+1-memcpy.c/     0           0     0     644     360       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+/**
+ * _memcpy - copy a block of data from a source address to a destination
+ * @dest: the destination address
+ * @src: the source address
+ * @n: the size
+ * Return: char
+ */
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	return (memcpy(dest, src, n));
+}
+1-strncat.c/    0           0     0     644     393       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+/**
+ * _strncat - copy a number of characters into the string
+ * @dest: the string to recieve the addition at the end
+ * @src: the string to copy from
+ * @n: the number of characters to be added
+ * Return: char
+ */
+char *_strncat(char *dest, char *src, int n)
+{
+	return (strncat(dest, src, n));
+}
+
+2-strchr.c/     0           0     0     644     287       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+/**
+ * _strchr - first occurence of a given string
+ * @s: the string
+ * @c. the char to count the occurence for
+ * Return: char
+ */
+char *_strchr(char *s, char c)
+{
+	return (strchr(s, c));
+}
+
+2-strlen.c/     0           0     0     644     142       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+int _strlen(char *s)
+{
+	return (strlen(s));
+}
+2-strncpy.c/    0           0     0     644     178       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+char *_strncpy(char *dest, char *src, int n)
+{
+	return (strncpy(dest, src, n));
+}
+3-islower.c/    0           0     0     644     142       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+int _islower(int c)
+{
+	return (islower(c));
+}
+3-puts.c/       0           0     0     644     130       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+void _puts(char *s)
+{
+	puts(s);
+}
+3-strcmp.c/     0           0     0     644     161       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+int _strcmp(char *s1, char *s2)
+{
+	 return (strcmp(s1, s2));
+	 }
+
+3-strspn.c/     0           0     0     644     173       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+unsigned int _strspn(char *s, char *accept)
+{
+ return (strspn(s, accept));
+}
+
+4-isalpha.c/    0           0     0     644     142       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+int _isalpha(int c)
+{
+	return (isalpha(c));
+}
+4-strpbrk.c/    0           0     0     644     168       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+char *_strpbrk(char *s, char *accept)
+{
+	return (strpbrk(s, accept));
+}
+5-strstr.c/     0           0     0     644     172       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+char *_strstr(char *haystack, char *needle)
+{
+	return (haystack, needle);
+}
+6-abs.c/        0           0     0     644     134       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+int _abs(int n)
+{
+	return (abs(n));
+}
+9-strcpy.c/     0           0     0     644     166       `
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "main.h"
+char *_strcpy(char *dest, char *src)
+{
+	return (strcpy(dest, src));
+}
+_putchar.c/     0           0     0     644     281       `
+#include <unistd.h>
+
+/**
+ *  * _putchar - writes the character c to stdout
+ *   * @c: The character to print
+ *    *
+ *     * Return: On success 1.
+ *      * On error, -1 is returned, and errno is set appropriately.
+ *       */
+int _putchar(char c)
+{
+		return (write(1, &c, 1));
+}
+
